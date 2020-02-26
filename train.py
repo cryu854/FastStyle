@@ -244,10 +244,6 @@ def trainer(style_file, train_path, content_weight, style_weight,
 
 
 
-
-
-
-
 def main():
 
     parameters = {
