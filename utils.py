@@ -4,16 +4,15 @@ import PIL.Image
 import os
 
 def tensor_to_image(tensor):
-    tensor = tensor
     tensor = np.array(tensor, dtype=np.uint8)
     if np.ndim(tensor)>3:
         assert tensor.shape[0] == 1
         tensor = tensor[0]
     return PIL.Image.fromarray(tensor)
-
-def load_img(path_to_img, resize=False):
+    
+def load_img(path_to_img, resize=True):
     img = tf.io.read_file(path_to_img)
-    img = tf.image.decode_image(img, channels=3)
+    img = tf.image.decode_jpeg(img, channels=3)
     img = tf.image.convert_image_dtype(img, tf.float32)
     
     if resize:
