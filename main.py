@@ -1,11 +1,17 @@
+# USAGE
+# python main.py train --style_file ./path/to/style/image.jpg   \
+#                      --dataset_path ./path/to/dataset \
+#                      --weights ./path/to/weights  \
+#                      --batch 2
+
+# python main.py evaluate --image ./path/to/content/image.jpg   \
+#                         --weights ./path/to/style/weights \
+#                         --result ./path/to/save/result
+
 import os
 import argparse
 from train import trainer
 from evaluate import transfer
-
-# USAGE
-# python main.py train
-# python main.py evaluate 
 
 CONTENT_WEIGHT = 6e0
 STYLE_WEIGHT = 2e-3
@@ -52,6 +58,11 @@ def main():
                          metavar=RESULT_NAME,
                          help='Path to the transfer results',
                          default=RESULT_NAME)
+    parser.add_argument('--batch', required=False, type=int,
+                         metavar=BATCH_SIZE,
+                         help='Training batch size',
+                         default=BATCH_SIZE)
+
     args = parser.parse_args()
 
 
@@ -60,7 +71,7 @@ def main():
     if args.command == "train":
         assert os.path.exists(args.dataset), 'dataset path not found !'
         assert os.path.exists(args.style), 'style image not found !'
-        assert BATCH_SIZE > 0
+        assert args.batch > 0
         assert NUM_EPOCHS > 0
         assert CONTENT_WEIGHT >= 0
         assert STYLE_WEIGHT >= 0
@@ -69,15 +80,15 @@ def main():
 
         parameters = {
                 'style_file' : args.style,
-                'train_path' : args.dataset,
+                'dataset_path' : args.dataset,
                 'weights_path' : args.weights,
+                'debug' : args.debug,
                 'content_weight' : CONTENT_WEIGHT,
                 'style_weight' : STYLE_WEIGHT,
                 'tv_weight' : TV_WEIGHT,
                 'learning_rate' : LEARNING_RATE,
-                'batch_size' : BATCH_SIZE,
+                'batch_size' : args.batch,
                 'epochs' : NUM_EPOCHS,
-                'debug' : args.debug
             }
 
         trainer(**parameters)

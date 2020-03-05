@@ -1,28 +1,5 @@
 """ 
 Feed-forward network to generate the stylized result.
-
-    CONV_2D
-       ↓
-    CONV_2D
-       ↓
-    CONV_2D
-       ↓
-     RESID
-       ↓
-     RESID
-       ↓
-     RESID
-       ↓
-     RESID
-       ↓
-     RESID
-       ↓
-    T_CONV_2D
-       ↓
-    T_CONV_2D
-       ↓
-    T_CONV_2D (tanh)
-    
 """
 import tensorflow as tf
 
@@ -129,14 +106,3 @@ class feed_forward(tf.keras.models.Model):
         x = self.resize_conv2(x)
         x = self.conv4(x, relu=False)
         return (tf.nn.tanh(x) * 150 + 255. / 2)
-        # x = (tf.nn.tanh(x) + 1) * 127.5 
-
-
-
-
-""" 
-forward = feed_forward()
-x = forward(tf.zeros((10, 256, 256, 3)))
-print(x.shape)
-forward.summary()
- """

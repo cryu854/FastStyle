@@ -71,7 +71,7 @@ class StyleContentModel(tf.keras.models.Model):
         return {'content':content_dict, 'style':style_dict}
 
 
-def trainer(style_file, train_path, weights_path, content_weight, style_weight, 
+def trainer(style_file, dataset_path, weights_path, content_weight, style_weight, 
             tv_weight, learning_rate, batch_size, epochs, debug):
 
     # Setup the given layers
@@ -92,20 +92,20 @@ def trainer(style_file, train_path, weights_path, content_weight, style_weight,
     # Load style target image
     style_image = load_img(style_file, resize=False)
 
-    # Load content target images
+    # Initialize content target images
     batch_shape = (batch_size, 256, 256, 3)
-
     X_batch = np.zeros(batch_shape, dtype=np.float32)
 
     # Extract style target 
     style_target = extractor(style_image*255.0)['style']
 
     # Build optimizer
+    opt = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+
     loss_metric = tf.keras.metrics.Mean()
     sloss_metric = tf.keras.metrics.Mean()
     closs_metric = tf.keras.metrics.Mean()
     tloss_metric = tf.keras.metrics.Mean()
-    opt = tf.keras.optimizers.Adam(learning_rate=1e-3)
 
 
     @tf.function()
@@ -130,7 +130,7 @@ def trainer(style_file, train_path, weights_path, content_weight, style_weight,
         tloss_metric(t_loss)
 
 
-    train_dataset = tf.data.Dataset.list_files(train_path + '/*.jpg')
+    train_dataset = tf.data.Dataset.list_files(dataset_path + '/*.jpg')
     train_dataset = train_dataset.map(load_img,
                                       num_parallel_calls=tf.data.experimental.AUTOTUNE).cache()
     train_dataset = train_dataset.shuffle(1024)
