@@ -1,5 +1,5 @@
-from utils import tensor_to_image, load_img, clip_0_1
-from forward import feed_forward
+from modules.utils import tensor_to_image, load_img, clip_0_1
+from modules.forward import feed_forward
 
 def transfer(image, weights, result):
 

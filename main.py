@@ -1,12 +1,12 @@
 # USAGE
-# python main.py train --style_file ./path/to/style/image.jpg   \
-#                      --dataset_path ./path/to/dataset \
+# python main.py train --style ./path/to/style/image.jpg   \
+#                      --dataset ./path/to/dataset \
 #                      --weights ./path/to/weights  \
 #                      --batch 2
 
 # python main.py evaluate --image ./path/to/content/image.jpg   \
-#                         --weights ./path/to/style/weights \
-#                         --result ./path/to/save/result
+#                         --weights ./path/to/weights \
+#                         --result ./path/to/save/results/image.jpg
 
 import os
 import argparse
@@ -21,11 +21,11 @@ LEARNING_RATE = 1e-3
 NUM_EPOCHS = 2
 BATCH_SIZE = 2
 
-STYLE_IMAGE = './Source/udnie.jpg'
-CONTENT_IMAGE = './Source/101.jpg'
+STYLE_IMAGE = './images/style/udnie.jpg'
+CONTENT_IMAGE = './images/content/chicago.jpg'
 DATASET_PATH = '../datasets/train2014'
 WEIGHTS_PATH = './weights/weights'
-RESULT_NAME = './Results/Result.jpg'
+RESULT_NAME = './images/results/Result.jpg'
 
 
 def main():
@@ -35,7 +35,7 @@ def main():
     parser.add_argument('command',
                          metavar='<command>',
                          help="'train' or 'evaluate'")
-    parser.add_argument('--debug', required=False,
+    parser.add_argument('--debug', required=False, type=bool,
                          metavar=False,
                          help='Whether to print the loss',
                          default=False)
@@ -54,7 +54,7 @@ def main():
                          metavar=WEIGHTS_PATH,
                          help='Checkpoints directory',
                          default=WEIGHTS_PATH)
-    parser.add_argument('--result_name', required=False,
+    parser.add_argument('--result', required=False,
                          metavar=RESULT_NAME,
                          help='Path to the transfer results',
                          default=RESULT_NAME)
@@ -101,7 +101,7 @@ def main():
         parameters = {
                 'image' : args.image,
                 'weights' : args.weights,
-                'result' : args.result_name,
+                'result' : args.result,
             }
 
         transfer(**parameters)

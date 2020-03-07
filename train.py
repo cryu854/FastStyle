@@ -2,9 +2,9 @@ import tensorflow as tf
 import numpy as np
 import os
 
-from utils import tensor_to_image, load_img, load_img_path, create_folder, clip_0_1
-from vgg19 import preprocess_input, VGG19
-from forward import feed_forward
+from modules.utils import tensor_to_image, load_img, load_img_path, create_folder, clip_0_1
+from modules.vgg19 import preprocess_input, VGG19
+from modules.forward import feed_forward
 
 
 def vgg_layers(layer_names):

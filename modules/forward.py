@@ -105,4 +105,4 @@ class feed_forward(tf.keras.models.Model):
         x = self.resize_conv1(x)
         x = self.resize_conv2(x)
         x = self.conv4(x, relu=False)
-        return (tf.nn.tanh(x) * 150 + 255. / 2)
+        return (tf.nn.tanh(x) * 150 + 255. / 2) # for better convergence
