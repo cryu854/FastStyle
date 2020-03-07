@@ -12,27 +12,21 @@ Added styles from various paintings to a photo of Chicago. Check the ./results f
 <div align='center'>
 <img src = 'images/content/chicago.jpg' height="200px">
 </div>
-     
 <div align = 'center'>
-
 <a href = 'images/style/wave.jpg'><img src = 'images/thumbs/wave.jpg' height = '200px'></a>
 <img src = 'images/results/wave.jpg' height = '200px'>
 <img src = 'images/results/africa.jpg' height = '200px'>
 <a href = 'images/style/africa.jpg'><img src = 'images/thumbs/africa.jpg' height = '200px'></a>
-
 <br>
 <a href = 'images/style/starry_night.jpg'><img src = 'images/thumbs/starry_night.jpg' height = '200px'></a>
 <img src = 'images/results/starry_night.jpg' height = '200px'>
 <img src = 'images/results/hampson.jpg' height = '200px'>
 <a href = 'images/style/hampson.jpg'><img src = 'images/thumbs/hampson.jpg' height = '200px'></a>
-
 <br>
 <a href = 'images/style/aquarelle.jpg'><img src = 'images/thumbs/aquarelle.jpg' height = '200px'></a>
 <img src = 'images/results/aquarelle.jpg' height = '200px'>
-<img src = 'images/results/the_shipwreck_of_the_minotaur.jpg' height = '200px'>
-<a href = 'images/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'images/thumbs/shipwreck.jpg' height = '200px'></a>
-</div>
-
+<img src = 'images/results/shipwreck.jpg' height = '200px'>
+<a href = 'images/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'images/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
 <br>
 <a href = 'images/style/chinese_style.jpg'><img src = 'images/thumbs/chinese_style.jpg' height = '200px'></a>
 <img src = 'images/results/chinese_style.jpg' height = '200px'>
