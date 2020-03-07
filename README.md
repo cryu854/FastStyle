@@ -73,9 +73,9 @@ Example usage:
 
 ### Requirements
 You will need the following to run the above:
-- TensorFlow 2.0 ↑
-- Python 2.7.9, Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2
-- If you want to train (and don't want to wait for 4 months):
+- TensorFlow >= 2.0
+- Python 3.7.5, Pillow 7.0.0, numpy 1.18
+- If you want to train (and don't want to wait too long):
   - A decent GPU
   - All the required NVIDIA software to run TF on a GPU (cuda, etc)
 
