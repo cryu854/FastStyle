@@ -76,8 +76,4 @@ You will need the following to run the above:
 
 ### Attributions/Thanks
 - Some readme/docs formatting was borrowed from Logan Engstrom's [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer)
-<<<<<<< HEAD
 - Some code was borrowed from TensorFlow documentation [Neural style transfer](https://www.tensorflow.org/tutorials/generative/style_transfer)
-=======
-- Some code was borrowed from TensorFlow's official documents [Neural style transfer](https://www.tensorflow.org/tutorials/generative/style_transfer)
->>>>>>> 7d2dc954f59e7eaa18850aa4c7b8cca7ebf68016
