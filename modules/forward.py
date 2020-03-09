@@ -3,7 +3,6 @@ Feed-forward network to generate the stylized result.
 """
 import tensorflow as tf
 
-
 class instance_norm(tf.keras.layers.Layer):
     def __init__(self, epsilon=1e-3):
         super(instance_norm, self).__init__()
@@ -79,19 +78,19 @@ class feed_forward(tf.keras.models.Model):
     def __init__(self):
         super(feed_forward, self).__init__()
         # [filters, kernel, stride]
-        self.conv1 = conv_2d(32, 9, 1)              # [3, 256, 256]
-        self.conv2 = conv_2d(64, 3, 2)              # [32, 256, 256]
-        self.conv3 = conv_2d(128, 3, 2)             # [64, 128, 128]
-        self.resid1 = residual(128, 3, 1)           # [128, 64, 64]
-        self.resid2 = residual(128, 3, 1)           # [128, 64, 64]
-        self.resid3 = residual(128, 3, 1)           # [128, 64, 64]
-        self.resid4 = residual(128, 3, 1)           # [128, 64, 64]
-        self.resid5 = residual(128, 3, 1)           # [128, 64, 64]
-        #self.tran_conv1 = tran_conv_2d(64, 3, 2)    # [64, 128, 128]
-        #self.tran_conv2 = tran_conv_2d(32, 3, 2)    # [32, 256, 256]
+        self.conv1 = conv_2d(32, 9, 1)     
+        self.conv2 = conv_2d(64, 3, 2)           
+        self.conv3 = conv_2d(128, 3, 2)     
+        self.resid1 = residual(128, 3, 1)         
+        self.resid2 = residual(128, 3, 1)          
+        self.resid3 = residual(128, 3, 1)     
+        self.resid4 = residual(128, 3, 1)     
+        self.resid5 = residual(128, 3, 1)    
+        #self.tran_conv1 = tran_conv_2d(64, 3, 2)  
+        #self.tran_conv2 = tran_conv_2d(32, 3, 2)    
         self.resize_conv1 = resize_conv_2d(64, 3, 2)
         self.resize_conv2 = resize_conv_2d(32, 3, 2)
-        self.conv4 = conv_2d(3, 9, 1)               # [3, 256, 256]
+        self.conv4 = conv_2d(3, 9, 1)              
 
     def call(self, inputs):
         x = self.conv1(inputs)
@@ -105,4 +104,4 @@ class feed_forward(tf.keras.models.Model):
         x = self.resize_conv1(x)
         x = self.resize_conv2(x)
         x = self.conv4(x, relu=False)
-        return (tf.nn.tanh(x) * 150 + 255. / 2) # for better convergence
+        return (tf.nn.tanh(x) * 150 + 255. / 2)     # for better convergence

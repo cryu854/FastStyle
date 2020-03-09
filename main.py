@@ -24,7 +24,7 @@ BATCH_SIZE = 2
 STYLE_IMAGE = './images/style/udnie.jpg'
 CONTENT_IMAGE = './images/content/chicago.jpg'
 DATASET_PATH = '../datasets/train2014'
-WEIGHTS_PATH = './weights/weights'
+WEIGHTS_PATH = './weights/wave/weights'
 RESULT_NAME = './images/results/Result.jpg'
 
 
@@ -64,7 +64,6 @@ def main():
                          default=BATCH_SIZE)
 
     args = parser.parse_args()
-
 
 
     # Validate arguments

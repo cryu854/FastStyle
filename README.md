@@ -6,7 +6,7 @@ The neural network is a combination of Gatys' [A Neural Algorithm of Artistic St
 
 
 ## Image Stylization :art:
-Added styles from various paintings to a photo of Chicago. Check the ./results folder to see more images.
+Added styles from various paintings to a photo of Chicago. Check the ./images/results folder to see more images.
 
 
 <div align='center'>
@@ -18,29 +18,24 @@ Added styles from various paintings to a photo of Chicago. Check the ./results f
 <img src = 'images/results/africa.jpg' height = '200px'>
 <a href = 'images/style/africa.jpg'><img src = 'images/thumbs/africa.jpg' height = '200px'></a>
 <br>
-<a href = 'images/style/starry_night.jpg'><img src = 'images/thumbs/starry_night.jpg' height = '200px'></a>
-<img src = 'images/results/starry_night.jpg' height = '200px'>
-<img src = 'images/results/hampson.jpg' height = '200px'>
-<a href = 'images/style/hampson.jpg'><img src = 'images/thumbs/hampson.jpg' height = '200px'></a>
-<br>
 <a href = 'images/style/aquarelle.jpg'><img src = 'images/thumbs/aquarelle.jpg' height = '200px'></a>
 <img src = 'images/results/aquarelle.jpg' height = '200px'>
 <img src = 'images/results/shipwreck.jpg' height = '200px'>
 <a href = 'images/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'images/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
+<br>
+<a href = 'images/style/starry_night.jpg'><img src = 'images/thumbs/starry_night.jpg' height = '200px'></a>
+<img src = 'images/results/starry_night.jpg' height = '200px'>
+<img src = 'images/results/hampson.jpg' height = '200px'>
+<a href = 'images/style/hampson.jpg'><img src = 'images/thumbs/hampson.jpg' height = '200px'></a>
 <br>
 <a href = 'images/style/chinese_style.jpg'><img src = 'images/thumbs/chinese_style.jpg' height = '200px'></a>
 <img src = 'images/results/chinese_style.jpg' height = '200px'>
 <img src = 'images/results/udnie.jpg' height = '200px'>
 <a href = 'images/style/udnie.jpg'><img src = 'images/thumbs/udnie.jpg' height = '200px'></a>
 </div>
-
 <p align = 'center'>
-All the models were trained on the same default setting.
+All the models were trained on the same default settings.
 </p>
-
-
-
-
 
 ## Implementation Details
 
@@ -49,7 +44,7 @@ All the models were trained on the same default setting.
 
 ### Training Style Transfer Networks
 Use `main.py` to train a new style transfer network.
-Training takes 6 hours on a GTX 1060 3GB (when batch size is 2). 
+Training takes 5~6 hours on a GTX 1060 3GB (when batch size is 2).
 **Before you run this, you should run `setup.sh` to download the dataset**. 
 
 Example usage:
@@ -62,7 +57,7 @@ Example usage:
 
 ### Evaluating Style Transfer Networks
 Use `main.py` to evaluate a style transfer network. 
-Evaluation takes 2s per frame on a GTX 1060 3GB. 
+Evaluation takes 2s per frame(712x474) on a GTX 1060 3GB.  **Models for evaluation are [located here.](https://drive.google.com/drive/folders/1-ywa__KcK4uEEYOzgfeRCpCzP3RJKBwL?usp=sharing)**
 
 Example usage:
 
@@ -73,12 +68,12 @@ Example usage:
 
 ### Requirements
 You will need the following to run the above:
-- TensorFlow 2.0 ↑
-- Python 2.7.9, Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2
-- If you want to train (and don't want to wait for 4 months):
+- TensorFlow >= 2.0
+- Python 3.7.5, Pillow 7.0.0, numpy 1.18
+- If you want to train (and don't want to wait too long):
   - A decent GPU
   - All the required NVIDIA software to run TF on a GPU (cuda, etc)
 
 ### Attributions/Thanks
 - Some readme/docs formatting was borrowed from Logan Engstrom's [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer)
-- Some code was borrowed from TensorFlow's official documents [Neural style transfer](https://www.tensorflow.org/tutorials/generative/style_transfer)
+- Some code was borrowed from TensorFlow documentation [Neural style transfer](https://www.tensorflow.org/tutorials/generative/style_transfer)

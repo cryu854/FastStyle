@@ -3,19 +3,18 @@ from modules.forward import feed_forward
 
 def transfer(image, weights, result):
 
+    # Load content image.
     image = load_img(image, resize=False)
     
+    # Build the feed-forward network and load the weights.
     network = feed_forward()
     network.load_weights(weights)
 
-    import time
-    start = time.time()
-
+    # Geneerate the style imagee
     image = network(image)
 
-    end = time.time()
-    print("Total time: {:.1f}".format(end-start))
-
+    # Clip pixel values to 0-255
     image = clip_0_1(image)
 
+    # Save the style image
     tensor_to_image(image).save(result)
