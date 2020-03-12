@@ -132,7 +132,7 @@ def trainer(style_file, dataset_path, weights_path, content_weight, style_weight
 
     train_dataset = tf.data.Dataset.list_files(dataset_path + '/*.jpg')
     train_dataset = train_dataset.map(load_img,
-                                      num_parallel_calls=tf.data.experimental.AUTOTUNE).cache()
+                                      num_parallel_calls=tf.data.experimental.AUTOTUNE)
     train_dataset = train_dataset.shuffle(1024)
     train_dataset = train_dataset.batch(batch_size, drop_remainder=True)
 

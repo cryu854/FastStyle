@@ -62,6 +62,10 @@ def main():
                          metavar=BATCH_SIZE,
                          help='Training batch size',
                          default=BATCH_SIZE)
+    parser.add_argument('--max_dim', required=False, type=int,
+                         metavar=None,
+                         help='Resize the result image to desired size or remain as the original',
+                         default=None)
 
     args = parser.parse_args()
 
@@ -100,6 +104,7 @@ def main():
         parameters = {
                 'image' : args.image,
                 'weights' : args.weights,
+                'max_dim' : args.max_dim,
                 'result' : args.result,
             }
 
