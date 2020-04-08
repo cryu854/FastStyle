@@ -4,7 +4,7 @@
 #                      --weights ./path/to/weights  \
 #                      --batch 2
 
-# python main.py evaluate --image ./path/to/content/image.jpg   \
+# python main.py evaluate --content ./path/to/content/image.jpg   \
 #                         --weights ./path/to/weights \
 #                         --result ./path/to/save/results/image.jpg
 
@@ -46,7 +46,7 @@ def main():
                          metavar=STYLE_IMAGE,
                          help='Style image to train the specific style',
                          default=STYLE_IMAGE) 
-    parser.add_argument('--image', required=False,
+    parser.add_argument('--content', required=False,
                          metavar=CONTENT_IMAGE,
                          help='Content image to evaluate with',
                          default=CONTENT_IMAGE)  
@@ -98,11 +98,11 @@ def main():
 
 
     elif args.command == "evaluate":
-        assert args.image, 'content image not found !'
+        assert args.content, 'content image not found !'
         assert args.weights, 'weights path not found !'
 
         parameters = {
-                'image' : args.image,
+                'content' : args.content,
                 'weights' : args.weights,
                 'max_dim' : args.max_dim,
                 'result' : args.result,

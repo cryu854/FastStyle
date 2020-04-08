@@ -63,13 +63,13 @@ Example usage:
 
     python main.py evaluate    \
       --weights ./path/to/weights \
-      --image ./path/to/content/image.jpg \
+      --content ./path/to/content/image.jpg \
       --result ./path/to/save/results/image.jpg
 
 ### Requirements
 You will need the following to run the above:
 - TensorFlow >= 2.0
-- Python 3.7.5, Pillow 7.0.0, numpy 1.18
+- Python 3.7.5, Pillow 7.0.0, Numpy 1.18, Opencv 4.1.2
 - If you want to train (and don't want to wait too long):
   - A decent GPU
   - All the required NVIDIA software to run TF on a GPU (cuda, etc)
