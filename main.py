@@ -1,5 +1,5 @@
 # USAGE
-# python main.py train --style ./path/to/style/image.jpg   \
+# python main.py train --style ./path/to/style/image.jpg(video.mp4)   \
 #                      --dataset ./path/to/dataset \
 #                      --weights ./path/to/weights  \
 #                      --batch 2
@@ -29,9 +29,9 @@ RESULT_NAME = './images/results/Result.jpg'
 
 
 def main():
-    # Paese command line arguments
+    # Parse command line arguments
     parser = argparse.ArgumentParser(
-        description='Train Fast Style Transfer.')
+        description='Fast Style Transfer')
     parser.add_argument('command',
                          metavar='<command>',
                          help="'train' or 'evaluate'")
@@ -48,7 +48,7 @@ def main():
                          default=STYLE_IMAGE) 
     parser.add_argument('--content', required=False,
                          metavar=CONTENT_IMAGE,
-                         help='Content image to evaluate with',
+                         help='Content image/video to evaluate with',
                          default=CONTENT_IMAGE)  
     parser.add_argument('--weights', required=False,
                          metavar=WEIGHTS_PATH,
@@ -98,7 +98,7 @@ def main():
 
 
     elif args.command == "evaluate":
-        assert args.content, 'content image not found !'
+        assert args.content, 'content image/video not found !'
         assert args.weights, 'weights path not found !'
 
         parameters = {
@@ -110,5 +110,10 @@ def main():
 
         transfer(**parameters)
 
+
+    else:
+        print('Example usage : python main.py evaluate --content ./path/to/content/image.jpg')
+        
+        
 if __name__ == '__main__':
     main()
