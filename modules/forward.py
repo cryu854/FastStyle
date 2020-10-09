@@ -23,7 +23,7 @@ class conv_2d(tf.keras.layers.Layer):
         super(conv_2d, self).__init__()
         pad = kernel // 2
         self.paddings = tf.constant([[0, 0], [pad, pad],[pad, pad], [0, 0]])
-        self.conv2d = tf.keras.layers.Conv2D(filters, kernel, stride, padding='valid')
+        self.conv2d = tf.keras.layers.Conv2D(filters, kernel, stride, use_bias=False, padding='valid')
         self.instance_norm = instance_norm()
 
     def call(self, inputs, relu=True):
@@ -47,6 +47,9 @@ class resize_conv_2d(tf.keras.layers.Layer):
         new_w = inputs.shape[2] * self.stride * 2
         x = tf.image.resize(inputs, [new_h, new_w], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
         x = self.conv(x)
+        # return x
+
+        """ Redundant """
         x = self.instance_norm(x)
 
         return tf.nn.relu(x)

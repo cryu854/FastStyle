@@ -135,7 +135,7 @@ def trainer(style_file, dataset_path, weights_path, content_weight, style_weight
                                       num_parallel_calls=tf.data.experimental.AUTOTUNE)
     train_dataset = train_dataset.shuffle(1024)
     train_dataset = train_dataset.batch(batch_size, drop_remainder=True)
-
+    train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
 
     import time
     start = time.time()
