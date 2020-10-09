@@ -40,7 +40,7 @@ All the models were trained on the same default settings.
 ## Implementation Details
 
 - The **feed-forward network** is roughly the same as described in Johnson, except that batch normalization is replaced with Ulyanov's instance normalization, and the scaling/offset of the output `tanh` layer is slightly different (for better convergence), also use [Resize-convolution layer](https://distill.pub/2016/deconv-checkerboard/) to replace the regular transposed convolution for better upsampling (to avoid checkerboard artifacts)
-- The **loss network** used in this implementation follows [Logan Engstrom](https://github.com/lengstrom/fast-style-transfer) , we are all similar to the one described in Gatys , using VGG19 instead of VGG16 and typically using "shallower" layers than in Johnson's implementation,  for larger scale style features in transformation (e.g. use `relu1_1` rather than `relu1_2`).
+- The **loss network** used in this implementation follows [Logan Engstrom](https://github.com/lengstrom/fast-style-transfer) , which is similar to the one described in Gatys , using VGG19 instead of VGG16 and typically using "shallower" layers than in Johnson's implementation,  for larger scale style features in transformation (e.g. use `relu1_1` rather than `relu1_2`).
 
 ### Training Style Transfer Networks
 Use `main.py` to train a new style transfer network.
@@ -63,13 +63,12 @@ Example usage:
 
     python main.py evaluate    \
       --weights ./path/to/weights \
-      --image ./path/to/content/image.jpg \
-      --result ./path/to/save/results/image.jpg
+      --content ./path/to/content/image.jpg(video.mp4)
 
 ### Requirements
 You will need the following to run the above:
 - TensorFlow >= 2.0
-- Python 3.7.5, Pillow 7.0.0, numpy 1.18
+- Python 3.7.5, Pillow 7.0.0, Numpy 1.18, Opencv 4.1.2
 - If you want to train (and don't want to wait too long):
   - A decent GPU
   - All the required NVIDIA software to run TF on a GPU (cuda, etc)

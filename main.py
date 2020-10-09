@@ -1,10 +1,10 @@
 # USAGE
-# python main.py train --style ./path/to/style/image.jpg   \
+# python main.py train --style ./path/to/style/image.jpg(video.mp4)   \
 #                      --dataset ./path/to/dataset \
 #                      --weights ./path/to/weights  \
 #                      --batch 2
 
-# python main.py evaluate --image ./path/to/content/image.jpg   \
+# python main.py evaluate --content ./path/to/content/image.jpg   \
 #                         --weights ./path/to/weights \
 #                         --result ./path/to/save/results/image.jpg
 
@@ -29,9 +29,9 @@ RESULT_NAME = './images/results/Result.jpg'
 
 
 def main():
-    # Paese command line arguments
+    # Parse command line arguments
     parser = argparse.ArgumentParser(
-        description='Train Fast Style Transfer.')
+        description='Fast Style Transfer')
     parser.add_argument('command',
                          metavar='<command>',
                          help="'train' or 'evaluate'")
@@ -46,9 +46,9 @@ def main():
                          metavar=STYLE_IMAGE,
                          help='Style image to train the specific style',
                          default=STYLE_IMAGE) 
-    parser.add_argument('--image', required=False,
+    parser.add_argument('--content', required=False,
                          metavar=CONTENT_IMAGE,
-                         help='Content image to evaluate with',
+                         help='Content image/video to evaluate with',
                          default=CONTENT_IMAGE)  
     parser.add_argument('--weights', required=False,
                          metavar=WEIGHTS_PATH,
@@ -98,11 +98,11 @@ def main():
 
 
     elif args.command == "evaluate":
-        assert args.image, 'content image not found !'
+        assert args.content, 'content image/video not found !'
         assert args.weights, 'weights path not found !'
 
         parameters = {
-                'image' : args.image,
+                'content' : args.content,
                 'weights' : args.weights,
                 'max_dim' : args.max_dim,
                 'result' : args.result,
@@ -110,5 +110,10 @@ def main():
 
         transfer(**parameters)
 
+
+    else:
+        print('Example usage : python main.py evaluate --content ./path/to/content/image.jpg')
+        
+        
 if __name__ == '__main__':
     main()
