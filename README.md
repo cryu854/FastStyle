@@ -63,7 +63,8 @@ Example usage:
 
     python main.py evaluate    \
       --weights ./path/to/weights \
-      --content ./path/to/content/image.jpg(video.mp4)
+      --content ./path/to/content/image.jpg(video.mp4) \
+      --result ./path/to/save/results/image.jpg
 
 ### Requirements
 You will need the following to run the above:
