@@ -52,7 +52,7 @@ Example usage:
     python main.py train    \
       --style ./path/to/style/image.jpg \
       --dataset ./path/to/dataset \
-      --weights ./path/to/weights (--weights ~/.keras/models/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5)    \
+      --weights ./path/to/weights    \
       --batch 2    
 
 ##### Note: The vgg19 weights are downloaded on first run in ~/.keras/models/ .
