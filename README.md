@@ -52,8 +52,12 @@ Example usage:
     python main.py train    \
       --style ./path/to/style/image.jpg \
       --dataset ./path/to/dataset \
-      --weights ./path/to/weights \
+      --weights ./path/to/weights    \
       --batch 2    
+
+##### Note: The vgg19 weights are downloaded on first run in ~/.keras/models/ .
+
+##### Note: The training output is saved in project directory  .
 
 ### Evaluating Style Transfer Networks
 Use `main.py` to evaluate a style transfer network. 
@@ -62,7 +66,7 @@ Evaluation takes 2s per frame(712x474) on a GTX 1060 3GB.  **Models for evaluati
 Example usage:
 
     python main.py evaluate    \
-      --weights ./path/to/weights \
+      --weights ./path/to/weights (use the .index file) \
       --content ./path/to/content/image.jpg(video.mp4) \
       --result ./path/to/save/results/image.jpg
 
